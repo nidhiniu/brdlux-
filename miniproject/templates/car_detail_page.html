@@ -1,0 +1,121 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+{% block content %}
+  <div class="cardetail">
+    <h2>{{ car.model }}</h2>
+    <p class="price">${{ car.price }}</p>
+    
+    <div class="carimage">
+      <img src="{{ car.image.url }}" alt="{{ car.model }}">
+    </div>
+
+    <div class="cardescription">
+      <p>Fuel Type: {{ car.fuel_type }}</p>
+      <p>Description: {{ car.description }}</p>
+      
+      <form action="{% url 'add_to_favorites' car.id %}" method="POST">
+        {% csrf_token %}
+        <button type="submit" class="add-to-favorites-button">Add to Favorites</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}
+
+<style>
+    .cardetail {
+        width: 100%;
+        max-width: 900px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .cardetail h2 {
+        font-size: 28px;
+        color: #333;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    .price {
+        font-size: 22px;
+        color: #ff5722;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .carimage {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .carimage img {
+        width: 100%;
+        max-width: 600px;
+        height: auto;
+        border-radius: 8px;
+    }
+
+    .cardescription {
+        font-size: 16px;
+        color: #555;
+    }
+
+    .cardescription p {
+        margin-bottom: 15px;
+    }
+
+    .cardescription strong {
+        font-weight: 600;
+        color: #333;
+    }
+
+    .add-to-favorites-button {
+        display: inline-block;
+        padding: 12px 25px;
+        font-size: 16px;
+        background-color: #ff5722;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-align: center;
+        margin-top: 20px;
+        transition: background-color 0.3s;
+    }
+
+    .add-to-favorites-button:hover {
+        background-color: #e64a19;
+    }
+
+    @media (max-width: 768px) {
+        .cardetail {
+            padding: 15px;
+        }
+
+        .cardetail h2 {
+            font-size: 24px;
+        }
+
+        .price {
+            font-size: 20px;
+        }
+
+        .carimage img {
+            max-width: 100%;
+        }
+
+        .cardescription p {
+            font-size: 14px;
+        }
+
+        .add-to-favorites-button {
+            font-size: 14px;
+            padding: 10px 20px;
+        }
+    }
+</style>

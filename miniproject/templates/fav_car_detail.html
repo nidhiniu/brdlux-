@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<div class="favcardiv">
+    <div class="favcontainer">
+        <h1>{{ car.model }} - {{ car.brand.name }}</h1>
+        <img src="{{ car.image.url }}" >
+        <p>{{ car.description }}</p>
+        <p>Price: ${{ car.price }}</p>
+    </div>
+</div>
+
+
+</body>
+
+<style>
+   
+    .favcardiv {
+        width: 100%;  
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .favcontainer {
+        width: 100%;
+        max-width: 600px;  
+        background-color:transparent;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        text-align: center;
+        margin: 10px; 
+    }
+
+    .favcontainer h1 {
+        font-size: 28px;
+        color:white;
+        margin-bottom: 15px;
+    }
+
+    .favcontainer img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+        margin-bottom: 15px;
+    }
+
+    .favcontainer p {
+        font-size: 16px;
+        color:white;
+        margin-bottom: 10px;
+    }
+
+    .favcontainer p:last-of-type {
+        font-size: 18px;
+        color:goldenrod;
+        font-weight: bold;
+    }
+
+  
+</style>
+
+</html>

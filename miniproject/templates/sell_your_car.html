@@ -1,0 +1,93 @@
+{% extends 'home/base.html' %}
+
+{% block content %}
+    <div class="sell-form-container">
+        <h2>Add a New Car</h2>
+        
+        <form method="POST" enctype="multipart/form-data" class="car-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            
+            <button type="submit" class="submit-button">Add Car</button>
+        </form>
+
+        <h3><a href="{% url 'home' %}" class="back-link">Back to Home page</a></h3>
+    </div>
+
+
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    .sell-form-container {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color:rgba(0, 0, 0, 0.208);
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+        font-size: 24px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .car-form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .car-form p {
+        font-size: 16px;
+        margin: 10px 0;
+    }
+
+    .car-form input, .car-form select, .car-form textarea {
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #121212;
+        border-radius: 5px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    
+
+    .submit-button {
+        padding: 12px 20px;
+        background-color: rgba(0, 0, 0, 0.288);
+        border: none;
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 5px;
+        width:98%;
+        transition: background-color 0.3s ease;
+    }
+
+    .submit-button:hover {
+        background-color:rgba(0, 0, 0, 0.525);
+    }
+
+    .back-link {
+        color: white;
+        text-decoration: none;
+        font-size: 16px;
+        display: inline-block;
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .back-link:hover {
+        text-decoration: underline;
+        color: goldenrod;
+    }
+</style>
+{% endblock %}

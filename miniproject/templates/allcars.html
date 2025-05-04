@@ -1,0 +1,31 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block content %}
+{% csrf_token %}
+
+
+<div class="crud_op">
+    <h1>All Cars</h1>
+        
+    <table colspan="3">
+        <tr>
+            <th>Brand</th>
+            <th>Model</th>
+            <th>Actions</th>
+        </tr>
+        {% for car in cars %}
+        <tr>
+            <td>{{ car.brand }}</td>
+            <td>{{ car.model }}</td>
+            <td>
+                
+                <a href="{% url 'cardet' car.id %}">View</a> 
+                <a href="{% url 'updatecars' car.id %}">Edit</a> 
+                <a href="{% url 'deletecars' car.id %}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+{%endblock%}

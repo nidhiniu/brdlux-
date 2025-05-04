@@ -1,0 +1,72 @@
+{% load static %}
+
+<div class="headertop">
+    <a href="{% url 'home' %}" class="logo">
+        <img src="{% static 'images/BRD-Luxe-logo.png' %}" alt="Logo">
+    </a>
+
+            <ul>
+                 <li><div class="cate_gory">
+                    <div class="menu-item">
+                        <p>Categories</p>
+                            <div class="submenu">
+                            
+                                <a href="{% url 'car_by_category' 'Petrol' %}">Petrol</a>
+                                <a href="{% url 'car_by_category' 'Diesel' %}">Diesel</a>
+                                <a href="{% url 'car_by_category' 'Electric' %}">Electric</a>
+                            </div>
+                        </div>
+                    </div>
+                 </li>
+             <li>
+                <div class="menu-item">
+                    <p>Brands</p>
+                    <div class="submenu">
+                        {% if brands %}
+                            {% for brand in brands %}
+                                <a href="{% url 'car_by_brand' brand.name %}">{{ brand.name }}</a>
+                            {% endfor %}
+                        {% else %}
+                            <p>No brands available</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </li>
+            <li><a href="{% url 'sell_your_car' %}">Sell Your Car</a></li>
+            <li><a href="{% url 'all_cars' %}">All Cars</a></li>
+            <li><a class="link" href="{%  url 'timeline' %}">Timeline</a></li>
+
+
+        <li class="headeroptions">
+            {% if user.is_authenticated %}
+                {% if user.is_staff %}
+                    <p class="profile">{{ user.username }}</p>
+                    <a class="link" href="{% url 'allcars' %}">Manage Cars</a>
+                    <a class="link" href="{% url 'logout' %}">Logout</a>
+                {% else %}
+                    <p class="profile">{{ user.username }}</p>
+                    <a class="link" href="{% url 'profile' %}"><i class="fa-solid fa-user"></i></a>
+                    <a class="link" href="{%  url 'addpost' %}">Add post</a>
+                    <a class="link" href="{% url 'logout' %}">Logout</a>
+                {% endif %}
+            {% else %}
+                <a class="link" href="{% url 'login' %}">Login</a>
+                <a class="link" href="{% url 'register' %}">Register</a>
+            {% endif %}
+        </li>
+
+        <li class="favorites">
+            <a href="{% url 'favorites' %}" class="favorites-icon">
+                <i class="fa-sharp fa-solid fa-heart fa-lg"></i>
+            </a>
+            {% if user.is_authenticated %}
+                {% with favorite=request.user.favorite %}
+                    <span class="favorites-count">{{ favorite.items.count }}</span>
+                {% endwith %}
+            {% endif %}
+        </li>
+    </ul>
+    
+
+
+</div>

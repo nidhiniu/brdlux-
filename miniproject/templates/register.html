@@ -1,0 +1,35 @@
+{% extends 'home/base.html' %}
+{%load static%}
+{% block content %}
+{%csrf_token%}
+            
+    <div class="regcontainer">
+        <div class="regbox">
+            <h2>Sign Up</h2>
+    
+            <div class="regform">
+                <form method="post" action="{% url 'register' %}">
+                    {% csrf_token %}
+                    <input type="text" name="username" placeholder="Username" required>
+                    <input type="email" name="email" placeholder="Email" required>
+                    <input type="password" name="password1" placeholder="Password" required>
+                    <input type="password" name="password2" placeholder="Confirm Password" required>
+        
+                    <button type="submit">Create Account</button>
+                </form>
+        
+            </div>
+            <p class="footer-text">Already have an account? <a href="{% url 'login' %}">Login</a></p>
+        </div>
+    </div>
+
+   
+{%endblock%}
+
+
+
+   
+
+     
+    
+       

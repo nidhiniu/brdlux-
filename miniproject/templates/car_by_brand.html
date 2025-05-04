@@ -1,0 +1,57 @@
+{% extends 'home/home.html' %}
+
+{% block title %}Cars by {{ brand.name }}{% endblock %}
+
+{% block content %}
+    <header>
+        <h1>{{ brand.name }} Cars</h1>
+    </header>
+
+    <section class="midcontent">
+        {% for car in cars %}
+            <div class="carcard">
+                <img src="{{ car.image.url }}" alt="{{ car.model }}">
+                <div class="card-content">
+                    <h3>{{ car.brand.name }} {{ car.model }}</h3>
+                    <p class="price">${{ car.price }}</p>
+                    <p class="description">{{ car.description }}</p>
+                    <a href="{% url 'car_detail_view' car.id %}">
+                            <button>More Details</button>
+                    </a>                
+                </div>
+            </div>
+        {% endfor %}
+    </section>
+    
+    <div class="container">
+        <h2>We Take Pride In</h2>
+        <div class="iconcontainer">
+            <div class="icon">
+                <i class="fas fa-car"></i>
+                <p>3000+ Cars Sold</p>
+            </div>
+            <div class="icon">
+                <i class="fas fa-award"></i>
+                <p>Quality Assurance</p>
+            </div>
+            <div class="icon">
+                <i class="fas fa-piggy-bank"></i>
+                <p>Easy Finance Plans</p>
+            </div>
+            <div class="icon">
+                <i class="fas fa-gift"></i>
+                <p>Refer and win assured Gift</p>
+            </div>
+            <div class="icon">
+                <i class="fas fa-flag-checkered"></i>
+                <p>150+ Check Points</p>
+            </div>
+            <div class="icon">
+                <i class="fas fa-headset"></i>
+                <p>Finest Customer Service</p>
+            </div>
+        </div>
+    </div>
+
+   
+{% endblock %}

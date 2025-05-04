@@ -1,0 +1,97 @@
+{% extends 'home/base.html' %}
+
+{% block content %}
+    <div class="addpostpage">
+        <div class="addpostcontainer">
+            <div class="addpostbox">
+                <h1>Add post to your timeline</h1>
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-field">
+                        {{ form.as_p }} <!-- takes form fields as paragraphs -->
+                    </div>
+                    <input type="submit" value="Save Changes" class="submit-button">
+                    <br><br>
+                    <a href="{% url 'home' %}">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .addpostpage {
+            font-family: Arial, sans-serif;
+            background-color:transparent;
+            background-size: 100%;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 900px;
+            color: grey;
+        }
+
+        .addpostcontainer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 600px;
+            min-height: 900px;
+        }
+
+        .addpostbox {
+            background-color: rgba(0, 0, 0, 0.249);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 400px;
+            height: auto;
+            text-align: center;
+        }
+
+        .form-field {
+            margin-bottom: 15px;
+        }
+
+        .form-field input, .form-field textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+      
+
+ 
+
+        .form-field label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        a {
+            color:white;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: goldenrod;
+        }
+        .submit-button{
+            border-radius: 8px;
+            background-color:rgba(0, 0, 0, 0.461);
+            color:white;
+            padding:15px;
+            width:200px;
+            font-size: 18px;
+        }
+        .submit-button:hover{
+            color: goldenrod;
+        }
+    </style>
+
+{% endblock %}

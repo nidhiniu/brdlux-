@@ -1,0 +1,15 @@
+{% extends 'home/base.html'%}
+{% block content%}
+<div class="update_car">
+                    
+    <h1>Update Task</h1>
+
+    <form method="POST" enctype="multipart/form-data" class="updateform">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit" class="button">Update Task</button>
+    </form>
+    <a href="{% url 'allcars' %}">Back to All Cars</a>
+
+</div>
+{%endblock%}

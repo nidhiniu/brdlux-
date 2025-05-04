@@ -1,0 +1,33 @@
+{% load static %}
+
+<footer>
+  <div class="footer-container">
+    <div class="footer-left">
+      <div class="footer-logo">
+        <img src="{% static 'images/BRD-Luxe-logo.png' %}">
+      </div>
+
+      <div class="footer-contact">
+        <p><strong>BRD Complex, NH Bypass, Konikkara.P.O, Thrissur, Kerala - 680306</strong></p>
+      </div>
+
+      <div class="footer-links">
+        <p>Useful Links:</p>
+        <ul>
+          <li> <a href="{% url 'home' %}">Home</a></li>
+          <li><a href="{% url 'about_us' %}">About Us</a></li>
+          <li><a href="{% url 'all_cars' %}">All Cars</a></li>
+          <li> <a href="https://wa.me/+91987654321">Contact Us</a></li>
+          <li><a href="#">FAQs</a></li>
+          <li><a class="link" href="{% url 'logout' %}">Logout</a></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-rights">
+    <p>© Copyright BRD LUXE. All Rights Reserved</p>
+  </div>
+</footer>
+

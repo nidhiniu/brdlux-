@@ -1,0 +1,79 @@
+{% extends 'home/base.html' %}
+
+{% block content %}
+<body>
+    <div class="delete-car">
+        <h1>Are you sure you want to delete this car?</h1>
+        <p>Brand: {{ car.brand }}</p>
+        <p>Model: {{ car.model }}</p>
+
+        <form method="POST">
+            {% csrf_token %}
+            <button type="submit">Yes, delete it</button>
+        </form>
+
+        <a href="{% url 'allcars' %}">Cancel</a>
+    </div>
+</body>
+
+<style>
+    
+    .delete-car {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 30px;
+        background-color:rgba(0, 0, 0, 0.185);
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    .delete-car h1 {
+        color: rgba(255, 0, 0, 0.692);
+        font-size: 24px; 
+        margin-bottom: 20px;
+    }
+
+    .delete-car p {
+        font-size: 16px;
+        color:white;
+        margin: 10px 0;
+    }
+
+    .delete-car form {
+        margin-top: 20px;
+    }
+
+    .delete-car button {
+        padding: 8px 16px;
+        font-size: 14px; 
+        background-color:black;
+        color:white;
+        border: none;
+        border-radius: 5px; 
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .delete-car button:hover {
+        background-color: black;
+        color:goldenrod;
+    }
+
+   .delete-car a {
+        display: inline-block;
+        text-align: center;
+        margin-top: 20px;
+        color:white;
+        font-size: 14px; 
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+
+    .delete-car a:hover {
+        color:goldenrod;
+        text-decoration: underline;
+    }
+
+</style>
+{% endblock %}

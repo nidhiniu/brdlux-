@@ -1,0 +1,147 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block content %}
+{% csrf_token %}
+
+<div class="mid">
+    <div class="background">
+        <a href="#"> <img src= '{% static "images/brdlux2.jpg" %}' width="100%" height="auto"></a>
+        <div class="contact-slider">
+            <div class="contact-detail">
+                <p>Phone: +91987654321</p>
+            </div>
+          
+        </div>
+        <a href="https://wa.me/+91987654321" target="_blank" class="whatsapp-button">
+            <img src="{% static 'images/whatsapp.png'%}" alt="WhatsApp">
+        </a>
+       
+    </div>
+   
+</div>
+
+<header>
+    <h1>Premium Cars</h1>
+</header>
+
+<div class="midcontent">
+    {% for car in cars %}
+        <div class="carcard">
+            <img src="{{ car.image.url }}">
+            <!-- <p>Image URL: {{ car.image.url }}</p> -->
+            
+            <h3>{{ car.brand.name }}</h3> 
+            <p class="price">${{ car.price }}</p> 
+            <p class="description">{{ car.description }}</p> 
+            <a href="{% url 'car_detail_view' car.id %}">
+                <button>More Details</button>
+            </a>
+        </div>
+    {% endfor %}
+</div>
+
+<header>
+    <h1>All Brands</h1>
+</header>
+
+<div class="allbrands">
+    
+    <div class="brand-logo">
+        <a href="{% url 'brand_detail' 'aston martin' %}">
+            <img src="{% static 'images/logo/aston-martin.png' %}">
+        </a>
+    </div>
+    
+    <div class="brand-logo">
+        <a href="{% url 'brand_detail' 'lamborghini' %}">
+            <img src="{% static 'images/logo/lamborghini.jpg' %}">
+        </a>
+    </div>
+    <div class="brand-logo">
+        <a href="{% url 'brand_detail' 'maclaren' %}">
+            <img src="{% static 'images/logo/mclaren1649762557086.jpg' %}">
+        </a>
+    </div>
+    
+    <div class="brand-logo">
+        <a href="{% url 'brand_detail' 'Bently' %}">
+            <img src="{% static 'images/logo/bentley.png' %}">
+        </a>
+    </div>
+    <div class="brand-logo">
+        <a href="{% url 'brand_detail' 'Maserati' %}">
+            <img src="{% static 'images/logo/gph63sa_1483779.png' %}">
+        </a>
+    </div>
+    <div class="brand-logo">
+        <a href="{% url 'brand_detail' 'Hyundai' %}">
+            <img src="{% static 'images/logo/hyundai.jpg' %}">
+        </a>
+    </div>
+    <div class="brand-logo">
+        <a href="{% url 'brand_detail' 'audi' %}">
+            <img src="{% static 'images/logo/audi.jpg' %}">
+        </a>
+    </div>
+    <div class="brand-logo">
+        <a href="{% url 'brand_detail' 'rolls_royce' %}">
+            <img src="{% static 'images/logo/rolls-royce.jpg' %}">
+        </a>
+    </div>
+    <div class="brand-logo">
+        <a href="{% url 'brand_detail' 'bmw' %}">
+            <img src="{% static 'images/logo/bmw.jpg' %}">
+        </a>
+    </div>
+    <div class="brand-logo">
+        <a href="{% url 'brand_detail' 'jeep' %}">
+            <img src="{% static 'images/logo/jeep.jpg' %}">
+        </a>
+    </div>
+    <div class="brand-logo">
+        <a href="{% url 'brand_detail' 'kia' %}">
+            <img src="{% static 'images/logo/kia.jpg' %}">
+        </a>
+    </div>
+    <div class="brand-logo">
+        <a href="{% url 'brand_detail' 'mahindra' %}">
+            <img src="{% static 'images/logo/mahindra.jpg' %}">
+        </a>
+    </div>
+    <div class="brand-logo">
+        <a href="{% url 'brand_detail' 'mercedes_benz' %}">
+            <img src="{% static 'images/logo/mercedes-benz.jpg' %}">
+        </a>
+    </div>
+    <div class="brand-logo">
+        <a href="{% url 'brand_detail' 'volvo' %}">
+            <img src="{% static 'images/logo/volvo.jpg' %}">
+        </a>
+    </div>
+    <div class="brand-logo">
+        <a href="{% url 'brand_detail' 'toyota' %}">
+            <img src="{% static 'images/logo/toyota.jpg' %}">
+        </a>
+    </div>
+    <div class="brand-logo">
+        <a href="{% url 'brand_detail' 'tesla' %}">
+            <img src="{% static 'images/logo/tesla.jpg' %}">
+        </a>
+    </div>
+    
+    <div class="brand-logo">
+        <a href="{% url 'brand_detail' 'land_rover' %}">
+            <img src="{% static 'images/logo/land-rover1647236056893.jpg' %}">
+        </a>
+    </div>
+   
+    <div class="brand-logo">
+        <a href="{% url 'brand_detail' 'maruti_suzuki' %}">
+            <img src="{% static 'images/logo/maruti-suzuki1647009823420.jpg' %}">
+        </a>
+    </div>
+    
+</div>
+
+
+{% endblock %}

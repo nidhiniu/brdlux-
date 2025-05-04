@@ -1,0 +1,213 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block content %}
+{% csrf_token %}
+<div class="profpage">
+    <div class="profilecontainer">
+        <div class="profbox">
+            <div class="profile-info-left">
+                <h1>Profile</h1>
+                <p>User:{{ pro.user }}</p>
+                <p>Phone: {{ pro.phone }}</p>
+                <p>Email:{{ pro.email }}</p>
+                <p>Age:{{pro.age}}</p>
+                <p>Bio:{{pro.bio}}</p>
+
+                <a href="{% url 'editpro' pro.id %}">
+                    <button class="edit-btn">Edit</button>
+                </a>
+                <a href="{% url 'home' %}">
+                    <button class="home-btn">Home</button>
+                </a>
+            </div>
+            <div class="profile-info-right">
+                {% if pro.image %}
+                    <img src="{{ pro.image.url }}" alt="Profile Image" class="profile-img">
+                {% else %}
+                    <p>No profile image</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="user-posts">
+        {% for i in z %}
+            <div class="post-item">
+                <p class="post-title"><strong>{{ i.title }}</strong></p>
+                <p class="post-user"><strong>User:</strong> {{ i.user }}</p>
+                {% if i.img1 %}
+                    <img src="{{ i.img1.url }}" class="post-img" alt="Post Image">
+                {% else %}
+                    <p>No image for this post</p>
+                {% endif %}
+                <p class="post-content">{{ i.content }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+
+<style>
+.profpage {
+    font-family: Arial, sans-serif;
+    background-color: transparent;
+    display: flex;
+    width: 100%;
+    height: 700px;
+    padding: 0;
+    align-items: flex-start; 
+    justify-content:space-around;  
+}
+
+.profilecontainer {
+    width: 45%;  
+    z-index: 100;
+}
+
+.profbox {
+    background-color: rgba(0, 0, 0, 0.267);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    height: 470px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;  
+}
+
+.profbox h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.profile-info-left {
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.profile-info-left p {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.66);
+}
+
+.profile-info-left button {
+    width: 100%;
+    padding: 12px;
+    background-color: rgba(0, 0, 0, 0.185);
+    color: rgba(255, 255, 255, 0.863);
+    font-size: 16px;
+    border-radius: 8px;
+}
+
+.profile-info-left button:hover {
+    background-color: rgba(0, 0, 0, 0.263);
+    color: goldenrod;
+}
+
+.profile-info-right {
+    margin-top: 0;
+    text-align: center;
+    width: 50%;
+}
+
+.profile-img {
+    width: 180px;
+    height: 200px;
+    border-radius: 100px;
+    object-fit: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-posts {
+    width: 50%;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    max-height: 510px;
+    padding-right: 20px;
+    margin-top: 60px;
+    background-color: rgba(0, 0, 0, 0.212);
+    border-radius: 10px;
+    scrollbar-width: none;
+}
+
+.post-item {
+    background-color: rgba(0, 0, 0, 0.116);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.post-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+}
+
+.post-user {
+    font-size: 16px;
+    color: white;
+}
+
+.post-img {
+    margin-top: 15px;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.post-content {
+    margin-top: 15px;
+    font-size: 16px;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .profpage {
+        flex-direction: column;  
+        height: auto;
+    }
+
+    .profilecontainer {
+        width: 100%;
+        padding-right: 0;
+    }
+
+    .profbox {
+        flex-direction: column;
+    }
+
+    .profile-info-left {
+        width: 100%;
+    }
+
+    .profile-info-right {
+        width: 100%;
+    }
+
+    .profile-img {
+        width: 120px;
+        height: 120px;
+    }
+
+    .user-posts {
+        width: 100%;
+        max-height: calc(100vh - 200px); 
+    }
+
+    .post-item {
+        width: 100%;
+    }
+}
+
+</style>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'home/base.html' %}
+{%load static%}
+{% block content %}
+{%csrf_token%}
+            
+
+
+    <div class="logpage">
+        <div class="logincontainer">
+            <div class="loginbox">
+                <h2>Login Page</h2>
+    
+                <form method="POST" action="{% url 'login' %}">
+                    {% csrf_token %}
+                    <div class="inputbox">
+                        <input type="text" name="username" placeholder="Enter Username" required>
+                    </div>
+                    <div class="inputbox">
+                        <input type="password" name="password" placeholder="Enter Password" required>
+                    </div>
+                    <button type="submit" class="logbutton">Login</button>
+                </form>
+    
+                <p class="logtext"> <a href="{% url 'register' %}">Sign up</a></p>
+                <p class="logtext"><a href="{% url 'home' %}">Back to homepage</a></p>
+            </div>
+        </div>
+    
+    </div>
+
+  
+{%endblock%}
+

@@ -1,0 +1,14 @@
+{% extends 'home/base.html' %}
+{% block content%}
+<div class="view_car">
+    <h1>Car Details</h1>
+    <p>Brand: {{ car.brand }}</p>
+    <p>Model: {{ car.model }}</p>
+    <p>Price: {{ car.price }}</p>
+    <img src="{{ car.image.url }}" ><br>
+    <a href="{% url 'allcars' %}">Back to All Cars</a>
+    <a href="{% url 'home' %}">Back to Home page</a>
+
+</div>
+{%endblock%}
+

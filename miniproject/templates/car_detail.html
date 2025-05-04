@@ -1,0 +1,9 @@
+{% extends 'home/base.html' %}
+{% block content %}
+
+<h1>{{ car.model }} - {{ car.brand.name }}</h1>
+<img src="{{ car.image.url }}" alt="{{ car.model }}">
+<p>{{ car.description }}</p>
+<p>Price:${{ car.price }}</p>
+
+{% endblock %}

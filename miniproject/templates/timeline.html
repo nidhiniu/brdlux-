@@ -1,0 +1,135 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block content %}
+{% csrf_token %}
+
+<div class="timeline-container">
+    <div class="left-side-timeline">
+        <div class="sidebar-item">
+            <h2>Latest Automotive News</h2>
+            <ol>
+                <li>Maruti Suzuki announces price hike across vehicle range starting February 2025</li>
+                <li>Tata Motors restructuring CV business ahead of listing next fiscal</li>
+                <li>EVs to drive 30% of volumes for TVS</li>
+                <li>Need govt policy to make bioethanol fuels price more affordable</li>
+                <li>Bharat Mobility Global Expo 2025: VinFast betting big on India despite policy uncertainty; plans VF7 and VF6 launch before Diwali</li>
+                
+            </ol>
+        </div>
+    </div>
+
+    <div class="right-side-timeline">
+        {% for post in posts %}
+        <div class="post-card">
+            <div class="post-header">
+                <h3><a href="{% url 'user_posts' post.user.id %}">{{ post.user }}</a></h3>
+                <p>Title:{{ post.title }}</p>
+            </div>
+            <div class="post-body">
+                <img src="{{ post.img1.url }}" alt="Post Image" class="post-image">
+                <p>Comments:{{ post.content }}</p>
+            </div>
+           
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    .timeline-container {
+        display: flex;
+        background-color: transparent;
+        min-height: 100vh;
+    }
+    .post-header h3{
+        color:white;
+    }
+
+    .left-side-timeline {
+        width: 20%;
+        background-color:transparent;
+        height: 100vh;
+        position: sticky;
+        top: 0;
+        padding: 20px;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        overflow-y: auto; 
+    }
+
+    .sidebar-item h2 {
+        font-size: 18px;
+        margin-bottom: 10px;
+        color:white;  
+    }
+
+    .sidebar-item ol {
+        list-style:circle;
+        padding-left: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .sidebar-item li {
+        margin-bottom: 15px;
+        padding-left: 10px; 
+        font-size: 14px;
+        line-height: 1.6;
+        color:white;
+    }
+
+    .sidebar-item li a {
+        text-decoration: none;
+        color: white;
+    }
+
+    .right-side-timeline {
+        width: 80%;
+        padding: 20px;
+    }
+
+    .post-card {
+        background-color:transparent;
+        margin-bottom: 20px;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .post-header h3 {
+        margin: 0;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .post-header p {
+        margin: 5px 0;
+        color:white;
+        font-size: 14px;
+    }
+
+    .post-body {
+        margin-top: 10px;
+    }
+
+    .post-image {
+        width: 100%;
+        height: auto;
+        border-radius: 5px;
+        margin-top: 10px;
+    }
+
+    .post-footer {
+        margin-top: 10px;
+        display: flex;
+        justify-content: space-between;
+    }
+</style>
+
+{% endblock %}

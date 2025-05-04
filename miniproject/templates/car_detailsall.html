@@ -1,0 +1,105 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+{% block content %}
+  <div class="cardetail">
+    <h2> {{ car.model }}</h2>
+    <p class="price">${{ car.price }}</p>
+    
+    <div class="carimage">
+      <img src="{{ car.image.url }}" >
+    </div>
+
+    <div class="cardescription">
+      <p>Fuel Type: {{ car.fuel_type }}</p>
+      <p>Description: {{ car.description }}</p>
+      <p>Mileage:{{car.mileage}}</p>
+      <p>Color:{{car.color}}</p>
+      <p>Location:{{car.location}}</p>
+      
+      <form action="{% url 'add_to_favorites' car.id %}" method="POST">
+        {% csrf_token %}
+        <button type="submit">Add to Favorites</button>
+      </form>
+    </div>
+  </div>
+  <style>
+
+.cardetail {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color:transparent;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.cardetail h2 {
+  font-size: 32px;
+  color:white;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.price {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.carimage {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.carimage img {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.cardescription {
+  background-color:transparent;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.cardescription p {
+  font-size: 16px;
+  color:white;
+  margin-bottom: 15px;
+}
+
+.cardescription form {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.cardescription button {
+  background-color:rgba(0, 0, 0, 0.39);
+  color: white;
+  font-size: 18px;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cardescription button:hover {
+  background-color: rgba(0, 0, 0, 0.463);
+}
+
+
+
+  </style>
+
+{% endblock %}

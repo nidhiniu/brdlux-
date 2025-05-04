@@ -1,0 +1,95 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="addpropage">
+        <div class="addprocontainer">
+            <div class="addprobox">
+                <h1>Edit Your Profile</h1>
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-field">
+                        {{ form.as_p }} 
+                    </div>
+                    <input type="submit" value="Save Changes" class="submit-button">
+                    <br><br>
+                    <a href="{% url 'home' %}">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .addpropage {
+            font-family: Arial, sans-serif;
+            background-color: white;
+            background-size: 100%;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 900px;
+            color: grey;
+        }
+
+        .addprocontainer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 600px;
+            min-height: 900px;
+        }
+
+        .addprobox {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 400px;
+            height: auto;
+            text-align: center;
+        }
+
+        /* Form element styles */
+        .form-field {
+            margin-bottom: 15px;
+        }
+
+        .form-field input, .form-field textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .form-field input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            border: none;
+        }
+
+        .form-field input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .form-field label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+
+{% endblock %}
